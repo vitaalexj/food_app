@@ -40,7 +40,7 @@ const SLOT = {breakfast:'Завтрак',lunch:'Обед',dinner:'Ужин',snac
 const SLOT_SHARE = {breakfast:.25,lunch:.35,dinner:.27,snack:.13};
 const WEEKDAYS = ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'];
 const LS_KEY='foodflow-app-data-v1';
-function defaultState(){return {profile:{weight:86,goalWeight:100,age:24,height:'',sex:'male',activity:1.55,kcal:3000,protein:160,budget:6500,maxMins:30,avoid:[]},plan:{},checked:{},extra:[],prices:{}};}
+function defaultState(){return {profile:{weight:80,goalWeight:90,age:30,height:'',sex:'male',activity:1.55,kcal:2500,protein:130,budget:6500,maxMins:30,avoid:[]},plan:{},checked:{},extra:[],prices:{}};}
 function load(){try{const v=JSON.parse(localStorage.getItem(LS_KEY));if(v&&v.profile&&typeof v.profile==='object'&&v.plan&&typeof v.plan==='object')return {...defaultState(),...v,profile:{...defaultState().profile,...v.profile}};}catch(e){console.warn('Storage reset',e)}return defaultState();}
 let state=load();let activeView='today';let selectedDay=dateKey(new Date());let catalogQuery='';let catalogSort='protein';let toastTimer;
 function save(){try{localStorage.setItem(LS_KEY,JSON.stringify(state));}catch(e){notify('Хранилище недоступно — скачай резервную копию.');}}
